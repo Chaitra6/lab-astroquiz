@@ -14,12 +14,17 @@ import utility.EligibiltyCheck;
 @WebServlet(urlPatterns= {"/eligiblemain"})
 public class Eligibility extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private boolean spaceEligible;
+	
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	String points=request.getParameter("points");
+	EligibiltyCheck ec = new EligibiltyCheck();
+	spaceEligible = ec.checkQuizAnswer(points);
 	
-	if(false)
+	if(spaceEligible)
 	{
 		RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/success.html");
 		rd.forward(request, response);	

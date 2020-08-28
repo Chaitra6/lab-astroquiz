@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
-import utility.BasicEligibility;
+//import utility.BasicEligibility;
 import utility.EligibiltyCheck;
 
 @WebServlet(urlPatterns= {"/eligible"})
@@ -20,7 +20,8 @@ public class EligibilityViewController extends HttpServlet {
         super();
        
     }
-
+    
+   
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -45,6 +46,10 @@ public class EligibilityViewController extends HttpServlet {
 		user.setAge(age);
 		user.setHeight(height);
 		user.setWeight(weight);
+		
+		 EligibiltyCheck ec = new EligibiltyCheck();
+		 boolean spaceEligible = ec.basicEligibilityCheck(user);
+
 		
 		System.out.println(spaceEligible);
 			if(spaceEligible)
